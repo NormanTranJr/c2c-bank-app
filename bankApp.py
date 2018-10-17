@@ -1,14 +1,16 @@
 
-def gatekeeper(login):
-  if login == "admin":
+def gatekeeper(login, account_age):
+  if login == "admin" or login == "moderator":
     return "You have the privileges"
-  elif login== "user":
+  elif login == "user" and account_age >= 7:
     return "You have limited privileges."
+  elif login == "user" and account_age <= 7:
+    return "You have no privileges."
   elif login == "guest":
     return "you have no privileges."
 
 # 3. Call the gatekeeper function with a string and print what it returns.
-print(gatekeeper("user"))
+print(gatekeeper("user", 7))
 
 # 4. How could this code be improved? Make it better. Think about what other scenarios you should cover in your if logic.
 
